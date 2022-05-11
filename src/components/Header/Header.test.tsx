@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
 
 import { Header } from "./Header";
 
@@ -14,5 +16,15 @@ describe("<Header>", () => {
     expect(logo).toBeInTheDocument();
     expect(searchButton).toBeInTheDocument();
     expect(bagButton).toBeInTheDocument();
+  });
+
+  it("should open the menu modal", () => {
+    render(<Header />, { wrapper: MemoryRouter });
+    const menuButton = screen.getByRole("button", { name: /menu/i });
+
+    userEvent.click(menuButton);
+
+    const menuClose = screen.getByRole("button", { name: /close/i });
+    expect(menuClose).toBeInTheDocument();
   });
 });
