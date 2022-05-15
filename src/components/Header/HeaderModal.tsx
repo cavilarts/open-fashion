@@ -5,21 +5,17 @@ import {
   AiFillYoutube,
   AiOutlineTwitter,
 } from "react-icons/ai";
-import { GrClose } from "react-icons/gr";
 import { FiMapPin } from "react-icons/fi";
 import { Link } from "react-router-dom";
+
+import { Modal } from "../Modal/Modal";
 
 interface HeaderModalProps {
   handleClose: () => void;
 }
 
 export const HeaderModal: FC<HeaderModalProps> = ({ handleClose }) => (
-  <div
-    className={`absolute w-full h-full left-0 top-0 bg-white pt-4 pl-5 pr-10 transition-opacity`}
-  >
-    <button onClick={handleClose}>
-      <GrClose title="close" />
-    </button>
+  <Modal handleClose={handleClose}>
     <div className="flex justify-between mt-6">
       <button className="uppercase leading-8">Women</button>
       <button className="uppercase text-gray-400 leading-8">Man</button>
@@ -107,5 +103,5 @@ export const HeaderModal: FC<HeaderModalProps> = ({ handleClose }) => (
         <AiFillInstagram title="Instagram" />
       </Link>
     </div>
-  </div>
+  </Modal>
 );
